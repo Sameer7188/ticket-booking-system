@@ -31,6 +31,132 @@ A full-stack web application for booking movie tickets with user authentication,
 - **bcryptjs** - Password hashing
 - **CORS** - Cross-origin resource sharing
 
+## 🏗️ System Architecture
+
+```mermaid
+graph TB
+    subgraph "Client Layer"
+        User[👤 User]
+        Browser[🌐 Browser]
+        React[⚛️ React App]
+        Router[🛣️ React Router]
+        Context[🔧 Auth Context]
+    end
+
+    subgraph "Frontend Components"
+        Pages[📄 Pages]
+        Components[🧩 Components]
+        Services[🔌 API Services]
+        Styles[🎨 CSS Styles]
+    end
+
+    subgraph "API Gateway"
+        CORS[CORS Middleware]
+        Auth[Auth Middleware]
+    end
+
+    subgraph "Backend Layer"
+        Express[🚀 Express Server]
+        Controllers[🎮 Controllers]
+        Routes[🛤️ API Routes]
+        Middleware[🔒 Middleware]
+    end
+
+    subgraph "Database Layer"
+        MongoDB[(🗄️ MongoDB)]
+        Models[📊 Mongoose Models]
+    end
+
+    subgraph "External Services"
+        UPI[💳 UPI Payment]
+        QR[📱 QR Code Generator]
+    end
+
+    %% User interactions
+    User --> Browser
+    Browser --> React
+    React --> Router
+    React --> Context
+
+    %% Frontend internal connections
+    Router --> Pages
+    Pages --> Components
+    Components --> Services
+    React --> Styles
+
+    %% API communication
+    Services --> CORS
+    CORS --> Auth
+    Auth --> Express
+
+    %% Backend internal connections
+    Express --> Routes
+    Routes --> Controllers
+    Controllers --> Middleware
+
+    %% Database connections
+    Controllers --> Models
+    Models --> MongoDB
+
+    %% External service connections
+    Controllers --> UPI
+    Controllers --> QR
+
+    %% Data flow
+    User -.->|HTTP Requests| Services
+    Services -.->|JSON Responses| React
+    React -.->|UI Updates| User
+
+    %% Styling
+    classDef clientLayer fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef frontendLayer fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef apiLayer fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef backendLayer fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef databaseLayer fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    classDef externalLayer fill:#f1f8e9,stroke:#33691e,stroke-width:2px
+
+    class User,Browser,React,Router,Context clientLayer
+    class Pages,Components,Services,Styles frontendLayer
+    class CORS,Auth apiLayer
+    class Express,Controllers,Routes,Middleware backendLayer
+    class MongoDB,Models databaseLayer
+    class UPI,QR externalLayer
+```
+
+### Architecture Overview
+
+**Client Layer:**
+- **User Interface**: React-based SPA with modern UI/UX
+- **State Management**: React Context for authentication state
+- **Routing**: Client-side routing with React Router
+- **API Communication**: Axios for HTTP requests
+
+**API Gateway:**
+- **CORS**: Handles cross-origin requests
+- **Authentication**: JWT token validation middleware
+
+**Backend Layer:**
+- **Express Server**: RESTful API endpoints
+- **Controllers**: Business logic and request handling
+- **Routes**: API route definitions
+- **Middleware**: Request processing and validation
+
+**Database Layer:**
+- **MongoDB**: NoSQL database for data persistence
+- **Mongoose Models**: Data schema and validation
+
+**External Services:**
+- **UPI Payment**: Payment processing via QR codes
+- **QR Generation**: Dynamic QR code creation for payments
+
+### Data Flow
+
+1. **User Authentication**: User registers/logs in → JWT token generated → Stored in React Context
+2. **Show Browsing**: Frontend fetches shows from API → Displays in UI
+3. **Seat Booking**: User selects seats → Booking created in database → Confirmation sent
+4. **Payment Process**: QR code generated → User scans and pays → Manual confirmation → Receipt generated
+5. **Booking Management**: User views bookings/receipts → Data fetched from database → Displayed in UI
+
 ## 📁 Project Structure
 
 ```
