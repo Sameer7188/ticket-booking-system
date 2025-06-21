@@ -1,0 +1,167 @@
+/* ─────────  THEME TOKENS  ───────── */
+:root {
+  --clr-bg-dark: #121212;
+  --clr-card: #1e1e1e;
+  --clr-border: #2c2c2c;
+  --clr-text: #f1f1f1;
+  --clr-muted: #9b9b9b;
+  --clr-primary: #f8e559;
+  --clr-success: #28a745;
+  --clr-error: #e63946;
+}
+
+/* ─────────  PAGE WRAPPER  ───────── */
+.bookseats-wrapper {
+  min-height: 100vh;
+  background: var(--clr-bg-dark);
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+  color: var(--clr-text);
+}
+
+/* ─────────  INNER CARD  ───────── */
+.bookseats-container {
+  width: 100%;
+  max-width: 700px;
+  background: var(--clr-card);
+  border: 1px solid var(--clr-border);
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  padding: 2rem;
+}
+
+/* ─────────  TITLE  ───────── */
+.bookseats-title {
+  text-align: center;
+  color: var(--clr-primary);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ─────────  SEAT GRID  ───────── */
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 2.6rem);
+  gap: 0.55rem;
+  justify-content: center;
+  margin-bottom: 1.8rem;
+}
+
+.seat-btn {
+  width: 100%;
+  height: 2.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--clr-border);
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+/* Available */
+.seat-available {
+  background: #1f1f1f;
+  color: var(--clr-text);
+}
+.seat-available:hover {
+  transform: translateY(-2px);
+  background: #282828;
+}
+
+/* Selected */
+.seat-selected {
+  background: var(--clr-success);
+  border: 2px solid var(--clr-success);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Booked / disabled */
+.seat-booked {
+  background: #555;
+  color: #aaa;
+  border: 1px solid #555;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ─────────  LEGEND  ───────── */
+.legend {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  color: var(--clr-muted);
+}
+
+.legend-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid var(--clr-border);
+}
+
+.available-box { background: #1f1f1f; }
+.selected-box  { background: var(--clr-success); border-color: var(--clr-success); }
+.booked-box    { background: #555; border-color: #555; }
+
+/* ─────────  BUTTON  ───────── */
+.proceed-btn {
+  background: var(--clr-primary);
+  color: #000;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.proceed-btn:hover {
+  background: #e0ce4e;
+}
+
+/* ─────────  FEEDBACK MESSAGES  ───────── */
+.feedback-message {
+  text-align: center;
+  font-size: 0.95rem;
+  margin-top: 1rem;
+}
+.feedback-message.error   { color: var(--clr-error); }
+.feedback-message.success { color: var(--clr-success); }
+
+/* ─────────  SELECTED INFO  ───────── */
+.selected-info {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: var(--clr-primary);
+  font-weight: 600;
+}
+
+/* ─────────  RESPONSIVE  ───────── */
+@media (max-width: 768px) {
+  .seat-grid {
+    grid-template-columns: repeat(8, 2.4rem);
+    gap: 0.45rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .seat-grid {
+    grid-template-columns: repeat(6, 2.2rem);
+    gap: 0.4rem;
+  }
+  .seat-btn {
+    font-size: 0.85rem;
+  }
+}

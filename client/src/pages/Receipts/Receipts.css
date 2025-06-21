@@ -1,0 +1,121 @@
+:root {
+    --clr-bg-dark: #121212;
+    --clr-card: #1e1e1e;
+    --clr-border: #2c2c2c;
+    --clr-text: #f1f1f1;
+    --clr-muted: #999;
+    --clr-primary: #f8e559;
+    --clr-danger: #e63946;
+  }
+  
+  /* ====== PAGE BACKGROUND ====== */
+  .receipts-container {
+    background: var(--clr-bg-dark);
+    min-height: 100vh;
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: center;
+    color: var(--clr-text);
+  }
+  
+  /* ====== INNER CONTAINER ====== */
+  .receipts-inner {
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  /* ====== PAGE TITLE ====== */
+  .receipts-title {
+    color: var(--clr-primary);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+  
+  /* ====== EMPTY STATE ====== */
+  .receipts-empty {
+    text-align: center;
+    color: var(--clr-muted);
+    font-size: 1rem;
+  }
+  
+  /* ====== RECEIPT CARD ====== */
+  .receipt-card {
+    border: 2px dashed var(--clr-primary);
+    border-radius: 18px;
+    padding: 1.8rem;
+    background: var(--clr-card);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    position: relative;
+    flex-wrap: wrap;
+  }
+  
+  /* Text info section */
+  .receipt-details {
+    flex: 1;
+    min-width: 240px;
+  }
+  
+  .receipt-details h3 {
+    color: var(--clr-primary);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+  
+  .receipt-info {
+    margin-bottom: 0.4rem;
+    font-size: 0.96rem;
+  }
+  
+  .receipt-info strong {
+    color: var(--clr-text);
+    font-weight: 500;
+  }
+  
+  .receipt-amount {
+    color: var(--clr-danger);
+    font-weight: 600;
+  }
+  
+  /* Ticket ID style */
+  .receipt-id {
+    font-size: 0.85rem;
+    color: var(--clr-muted);
+    margin-top: 0.3rem;
+  }
+  
+  /* QR section */
+  .receipt-qr {
+    text-align: center;
+    min-width: 100px;
+  }
+  
+  .receipt-qr-caption {
+    font-size: 0.75rem;
+    color: var(--clr-muted);
+    margin-top: 0.4rem;
+  }
+  
+  /* ====== RESPONSIVE ====== */
+  @media (max-width: 600px) {
+    .receipt-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .receipt-details {
+      text-align: left;
+      width: 100%;
+    }
+  
+    .receipts-title {
+      font-size: 1.6rem;
+    }
+  }
+  

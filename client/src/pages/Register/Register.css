@@ -1,0 +1,137 @@
+.register-split-bg {
+    min-height: 100vh;
+    display: flex;
+    background: #121212;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
+  
+  .register-ticket-form {
+    flex: 1;
+    min-width: 100%;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .register-ticket-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f8e559;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .register-ticket-logo span {
+    color: white;
+  }
+  
+  .register-ticket-logo-accent {
+    color: #f8e559;
+  }
+  
+  .register-title {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .register-form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* === Input Styling === */
+  .register-input {
+    background: #1e1e1e;
+    border: 1px solid #2c2c2c;
+    padding: 0.85rem 1rem;
+    color: #f1f1f1;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s, background 0.3s;
+  }
+  
+  .register-input::placeholder {
+    color: #aaa;
+  }
+  
+  .register-input:focus {
+    border-color: #f8e559;
+    background: #262626;
+  }
+  
+  /* === Button Styling === */
+  .register-btn {
+    background: #f8e559;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 0.85rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .register-btn:hover {
+    background: #e0ce4e;
+  }
+  
+  /* === Messages === */
+  .register-error {
+    color: red;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  .register-success {
+    color: #28a745;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  /* === Login Link === */
+  .register-login-link {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #aaa;
+    text-align: center;
+  }
+  
+  .register-login-link a {
+    color: #f8e559;
+    text-decoration: none;
+  }
+  
+  /* === Background Section === */
+  .register-bg-image {
+    flex: 1;
+    background: url('https://images.unsplash.com/photo-1598899134739-df7d021d6799?auto=format&fit=crop&w=900&q=80') no-repeat center center;
+    background-size: cover;
+    min-height: 300px;
+    min-width: 320px;
+  }
+  
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .register-split-bg {
+      flex-direction: column;
+    }
+  
+    .register-bg-image {
+      order: -1;
+      height: 200px;
+    }
+  
+    .register-form {
+      max-width: 100%;
+    }
+  }
+  

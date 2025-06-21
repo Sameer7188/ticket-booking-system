@@ -1,0 +1,174 @@
+/* ─────────  CSS RESET (keeps layout tidy)  ───────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─────────  TOKENS / THEME  ───────── */
+:root {
+  /* colours */
+  --clr-bg: #121212;      /* navbar background (dark)   */
+  --clr-primary: #f8e559; /* yellow accent              */
+  --clr-text: #ffffff;    /* regular text               */
+  --clr-border: #2c2c2c;  /* subtle divider             */
+
+  /* misc */
+  --radius: 8px;
+  --transition: 0.25s ease-in-out;
+}
+
+/* ─────────  NAVBAR WRAPPER  ───────── */
+.navbar {
+  background: var(--clr-bg);
+  border-bottom: 1px solid var(--clr-border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+/* ─────────  INNER CONTAINER  ───────── */
+.navbar-container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ─────────  BRAND / LOGO  ───────── */
+.navbar-logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--clr-primary);
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  white-space: nowrap;
+}
+.navbar-logo span { color: var(--clr-text); }
+
+/* ─────────  DESKTOP LINKS  ───────── */
+.navbar-desktop {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.navbar-link,
+.user-greeting,
+.logout-btn,
+.register-btn {
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: var(--clr-text);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color var(--transition);
+}
+
+.navbar-link:hover,
+.logout-btn:hover,
+.register-btn:hover {
+  color: var(--clr-primary);
+}
+
+/* pill buttons */
+.register-btn,
+.logout-btn {
+  border: 1px solid var(--clr-primary);
+  background: var(--clr-primary);
+  color: #000;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.register-btn:hover,
+.logout-btn:hover {
+  background: #e0ce4e;
+  color: #000;
+}
+
+/* ─────────  MOBILE & TABLET  ───────── */
+.mobile-menu-btn {
+  display: none; /* hidden on desktop */
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--clr-text);
+  cursor: pointer;
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--clr-bg);
+  border-bottom: 1px solid var(--clr-border);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-0.75rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-link,
+.mobile-user-greeting,
+.mobile-logout-btn,
+.mobile-register-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.25rem;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--clr-text);
+  width: 100%;
+  transition: background var(--transition);
+}
+.mobile-link:hover,
+.mobile-logout-btn:hover,
+.mobile-register-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-logout-btn,
+.mobile-register-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+/* ─────────  BREAKPOINTS  ───────── */
+
+/* Tablet & below  */
+@media (max-width: 991px) {
+  .navbar-desktop { display: none; }
+  .mobile-menu-btn { display: block; }
+}
+
+/* Mobile small  */
+@media (max-width: 599px) {
+  .navbar-logo { font-size: 1.2rem; }
+  .navbar-container { padding-inline: 0.75rem; }
+}
+
+/* Larger desktop (optional) */
+@media (min-width: 1400px) {
+  .navbar-container {
+    max-width: 1400px;
+    padding-inline: 2rem;
+  }
+}

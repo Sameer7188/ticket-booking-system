@@ -1,0 +1,165 @@
+.login-dark-container {
+    min-height: 100vh;
+    background: #121212;
+    color: #fff;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .login-logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #f8e559;
+    margin-bottom: 2rem;
+  }
+  
+  .login-logo span {
+    color: white;
+  }
+  
+  .login-heading {
+    font-size: 2rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .login-subtext {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .login-form-dark {
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .login-form-dark label {
+    font-size: 0.85rem;
+    color: #ccc;
+  }
+  
+  .login-form-dark input {
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #1e1e1e;
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+  }
+  
+  .password-field {
+    position: relative;
+  }
+  
+  .password-field input {
+    width: 100%;
+    padding-right: 3rem;
+  }
+  
+  .eye-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #ccc;
+    font-size: 0.9rem;
+  }
+  
+  .forgot-password {
+    text-align: right;
+    font-size: 0.85rem;
+  }
+  
+  .forgot-password a {
+    color: #f8e559;
+    text-decoration: none;
+  }
+  
+  .login-error {
+    color: red;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  .login-submit-btn {
+    background: #f8e559;
+    color: black;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: 0.3s ease;
+  }
+  
+  .login-submit-btn:hover {
+    background: #f1da42;
+  }
+  
+  .divider {
+    margin: 2rem 0 1rem;
+    text-align: center;
+    color: #666;
+    font-size: 0.85rem;
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: '';
+    height: 1px;
+    background: #333;
+    position: absolute;
+    top: 50%;
+    width: 40%;
+  }
+  
+  .divider::before {
+    left: 0;
+  }
+  
+  .divider::after {
+    right: 0;
+  }
+  
+  .social-login {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .social-btn {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .signup-link {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+  
+  .signup-link a {
+    color: #f8e559;
+    text-decoration: none;
+  }
+  

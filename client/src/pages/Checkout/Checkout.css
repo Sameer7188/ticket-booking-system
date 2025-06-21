@@ -1,0 +1,153 @@
+/* === ROOT COLORS === */
+:root {
+  --clr-bg-dark: #121212;
+  --clr-card: #1e1e1e;
+  --clr-border: #2c2c2c;
+  --clr-text: #f1f1f1;
+  --clr-muted: #9b9b9b;
+  --clr-primary: #f8e559;
+  --clr-success: #28a745;
+  --clr-error: #e63946;
+}
+
+/* === WRAPPER === */
+.checkout-wrapper {
+  background: var(--clr-bg-dark);
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+  color: var(--clr-text);
+}
+
+/* === CARD CONTAINER === */
+.checkout-container {
+  background: var(--clr-card);
+  border: 1px solid var(--clr-border);
+  border-radius: 14px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* === TITLE === */
+.checkout-title {
+  text-align: center;
+  color: var(--clr-primary);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* === SUMMARY SECTION === */
+.checkout-summary {
+  font-size: 1rem;
+  background: #181818;
+  border: 1px solid var(--clr-border);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+.checkout-total {
+  color: var(--clr-primary);
+  font-weight: bold;
+}
+
+/* === PAYMENT SECTION === */
+.checkout-payment {
+  text-align: center;
+}
+
+.upi-title {
+  color: var(--clr-muted);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.qr-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.qr-details {
+  font-size: 0.95rem;
+  color: var(--clr-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* === CTA BUTTON === */
+.paid-btn {
+  background: var(--clr-primary);
+  color: #000;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.paid-btn:hover {
+  background: #e0ce4e;
+}
+
+/* === FEEDBACK MESSAGES === */
+.success {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: var(--clr-success);
+  font-weight: 500;
+}
+
+.error {
+  color: var(--clr-error);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 640px) {
+  .checkout-container {
+    padding: 1.5rem;
+  }
+  .checkout-summary {
+    font-size: 0.95rem;
+  }
+  .qr-details {
+    font-size: 0.9rem;
+  }
+}
+
+.upi-ref-field {
+  margin: 1.2rem 0 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.upi-ref-field label {
+  font-size: 0.97rem;
+  color: #ccc;
+}
+.upi-ref-input {
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  font-size: 1rem;
+  background: #181818;
+  color: #fff;
+  outline: none;
+  margin-top: 0.2rem;
+}
+.upi-ref-input:focus {
+  border-color: #f8e559;
+}
+.upi-ref-error {
+  color: #e63946;
+  font-size: 0.95rem;
+  margin-top: 0.1rem;
+}
