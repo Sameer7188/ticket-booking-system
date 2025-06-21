@@ -360,4 +360,210 @@ This project is licensed under the ISC License.
 
 ---
 
-**Note**: This is a learning project. For production use, additional security measures, error handling, and testing should be implemented. 
+**Note**: This is a learning project. For production use, additional security measures, error handling, and testing should be implemented.
+
+## 🔄 System Sequence Diagrams
+
+### 1. User Authentication Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Client (React)
+    participant S as Server (Express)
+    participant DB as MongoDB
+    participant JWT as JWT Service
+
+    Note over U, JWT: Registration Flow
+    U->>C: Fill registration form
+    C->>S: POST /api/auth/register
+    S->>S: Validate input data
+    S->>S: Hash password with bcrypt
+    S->>DB: Create new user document
+    DB-->>S: User created successfully
+    S->>JWT: Generate JWT token
+    JWT-->>S: Token generated
+    S-->>C: 201 Created + JWT token
+    C->>C: Store token in localStorage
+    C->>C: Update AuthContext
+    C-->>U: Redirect to home page
+
+    Note over U, JWT: Login Flow
+    U->>C: Fill login form
+    C->>S: POST /api/auth/login
+    S->>DB: Find user by email
+    DB-->>S: User document
+    S->>S: Compare password with bcrypt
+    S->>JWT: Generate JWT token
+    JWT-->>S: Token generated
+    S-->>C: 200 OK + JWT token
+    C->>C: Store token in localStorage
+    C->>C: Update AuthContext
+    C-->>U: Redirect to home page
+```
+
+### 2. Movie Show Browsing Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Client (React)
+    participant S as Server (Express)
+    participant DB as MongoDB
+
+    U->>C: Visit home page
+    C->>S: GET /api/shows
+    S->>DB: Query all shows
+    DB-->>S: Shows data
+    S-->>C: 200 OK + Shows array
+    C->>C: Update state with shows
+    C-->>U: Display shows grid
+
+    U->>C: Click on a show
+    C->>S: GET /api/shows/:id
+    S->>DB: Query show by ID
+    DB-->>S: Show details
+    S-->>C: 200 OK + Show details
+    C->>C: Update state with show details
+    C-->>U: Display show details page
+```
+
+### 3. Seat Booking Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Client (React)
+    participant S as Server (Express)
+    participant DB as MongoDB
+    participant Auth as Auth Middleware
+
+    U->>C: Select seats and proceed
+    C->>C: Validate user authentication
+    C->>S: POST /api/bookings
+    Note over C, S: Include JWT token in header
+    S->>Auth: Verify JWT token
+    Auth-->>S: Token valid, user ID extracted
+    S->>S: Validate booking data
+    S->>DB: Check seat availability
+    DB-->>S: Available seats
+    S->>DB: Create booking document
+    DB-->>S: Booking created
+    S-->>C: 201 Created + Booking details
+    C->>C: Store booking info
+    C-->>U: Redirect to checkout page
+```
+
+### 4. Payment Processing Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Client (React)
+    participant S as Server (Express)
+    participant DB as MongoDB
+    participant QR as QR Generator
+    participant UPI as UPI Payment
+
+    U->>C: Proceed to payment
+    C->>S: GET payment details
+    S->>S: Generate payment amount
+    S->>QR: Generate UPI QR code
+    QR-->>S: QR code data
+    S-->>C: Payment details + QR code
+    C-->>U: Display QR code for payment
+
+    U->>UPI: Scan QR code and pay
+    UPI-->>U: Payment confirmation
+    U->>C: Confirm payment manually
+    C->>S: POST payment confirmation
+    S->>DB: Update booking status
+    DB-->>S: Booking updated
+    S->>DB: Create receipt document
+    DB-->>S: Receipt created
+    S-->>C: 200 OK + Receipt details
+    C->>C: Store receipt info
+    C-->>U: Display success message
+```
+
+### 5. Booking Management Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Client (React)
+    participant S as Server (Express)
+    participant DB as MongoDB
+    participant Auth as Auth Middleware
+
+    U->>C: Navigate to receipts page
+    C->>S: GET /api/receipts
+    Note over C, S: Include JWT token in header
+    S->>Auth: Verify JWT token
+    Auth-->>S: Token valid, user ID extracted
+    S->>DB: Query receipts by user ID
+    DB-->>S: User's receipts
+    S-->>C: 200 OK + Receipts array
+    C->>C: Update state with receipts
+    C-->>U: Display receipts list
+
+    U->>C: Click on specific receipt
+    C->>S: GET /api/receipts/:id
+    S->>Auth: Verify JWT token
+    Auth-->>S: Token valid
+    S->>DB: Query receipt by ID
+    DB-->>S: Receipt details
+    S-->>C: 200 OK + Receipt details
+    C->>C: Update state with receipt details
+    C-->>U: Display receipt details
+```
+
+### 6. Complete Booking Journey
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Client (React)
+    participant S as Server (Express)
+    participant DB as MongoDB
+    participant QR as QR Generator
+    participant UPI as UPI Payment
+
+    Note over U, UPI: Complete User Journey
+    U->>C: Browse shows
+    C->>S: GET /api/shows
+    S->>DB: Query shows
+    DB-->>S: Shows data
+    S-->>C: Shows array
+    C-->>U: Display shows
+
+    U->>C: Select show and seats
+    C->>S: POST /api/bookings
+    S->>DB: Create booking
+    DB-->>S: Booking created
+    S-->>C: Booking details
+    C-->>U: Redirect to checkout
+
+    U->>C: Proceed to payment
+    C->>S: GET payment details
+    S->>QR: Generate QR code
+    QR-->>S: QR data
+    S-->>C: QR code
+    C-->>U: Display QR code
+
+    U->>UPI: Pay via UPI
+    UPI-->>U: Payment success
+    U->>C: Confirm payment
+    C->>S: POST payment confirmation
+    S->>DB: Update booking & create receipt
+    DB-->>S: Updated data
+    S-->>C: Receipt details
+    C-->>U: Show success message
+
+    U->>C: View receipts
+    C->>S: GET /api/receipts
+    S->>DB: Query user receipts
+    DB-->>S: Receipts data
+    S-->>C: Receipts array
+    C-->>U: Display receipts
+``` 
